@@ -10,4 +10,5 @@ public interface ArticuloDao {
 	public Articulo get(int i);
 	public void actualizar(Articulo a);
 	public void listar();
+	public void MostrarMasCaro();
 }

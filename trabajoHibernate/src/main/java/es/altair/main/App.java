@@ -108,7 +108,7 @@ public class App
     			break;
     		
     		case 4:
-    			menuSecundario();
+    			aDao.MostrarMasCaro();
     			break;
     		}
         }while(opcion!=0);
@@ -328,7 +328,7 @@ public class App
 	    System.out.println("\t\t║                            ║");
 	    System.out.println("\t\t║     3) Modificar           ║");
 	    System.out.println("\t\t║                            ║");
-	    System.out.println("\t\t║     4) Listar              ║");
+	    System.out.println("\t\t║     4) Articulo Más Caro   ║");
 	    System.out.println("\t\t║                            ║");
 	    System.out.println("\t\t║     0) Salir               ║");
 	    System.out.println("\t\t╚════════════════════════════╝");

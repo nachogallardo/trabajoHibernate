@@ -98,4 +98,23 @@ public class ArticuloDaoImp implements ArticuloDao {
 		}
 	}
 
+	public void MostrarMasCaro() {
+		Articulo a=null;
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session sesion= sf.openSession();
+		
+		try {
+			sesion.beginTransaction();
+			a=(Articulo)sesion.createQuery("FROM Articulo where precio=(select MAX(precio) from Articulo)").uniqueResult();
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sesion.close();
+			sf.close();
+		}
+		System.out.println(a.getNombre()+" "+a.getPrecio()+"$");
+		
+	}
+
 }
