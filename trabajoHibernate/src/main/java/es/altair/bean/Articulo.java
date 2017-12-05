@@ -13,23 +13,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
-@Table(name="articulo")
+@Table(name = "articulo")
 public class Articulo implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idArticulo;
+	
 	private String nombre;
+	
 	@Temporal(TemporalType.DATE)
 	private Date fechaCompra;
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idTienda")
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idTienda")
 	private Tienda tienda;
+	
 	private int precio;
+
 	public Articulo() {
 		super();
 	}
-	
+
 	public Articulo(String nombre, Date fechaCompra, Tienda tienda, int precio) {
 		super();
 		this.nombre = nombre;
@@ -41,16 +47,19 @@ public class Articulo implements Serializable {
 	public int getIdArticulo() {
 		return idArticulo;
 	}
+
 	public void setIdArticulo(int idArticulo) {
 		this.idArticulo = idArticulo;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public Date getFechaCompra() {
 		return fechaCompra;
 	}
@@ -62,6 +71,7 @@ public class Articulo implements Serializable {
 	public Tienda getTienda() {
 		return tienda;
 	}
+
 	public void setTienda(Tienda tienda) {
 		this.tienda = tienda;
 	}
@@ -79,6 +89,5 @@ public class Articulo implements Serializable {
 		return "Articulo [idArticulo=" + idArticulo + ", nombre=" + nombre + ", fechaCompra=" + fechaCompra
 				+ ", tienda=" + tienda + ", precio=" + precio + "]";
 	}
-	
-	
+
 }

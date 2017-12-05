@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,8 @@ public class Tienda implements Serializable {
 	private String direccion;
 	
 	
-	@OneToMany(mappedBy="tienda",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="tienda",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	
 	private Set<Articulo> articulos;
 	@OneToMany(mappedBy="tnd")
 	private Set<ProveedorTienda> tiendas;
