@@ -346,6 +346,7 @@ public class App
 	    System.out.println("\t\t║                            ║");
 	    System.out.println("\t\t║     4) Articulo            ║");
 	    System.out.println("\t\t╚════════════════════════════╝");
+	    System.out.println();
 	}
 	
 }
