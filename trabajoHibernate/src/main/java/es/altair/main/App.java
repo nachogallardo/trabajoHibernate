@@ -2,6 +2,7 @@ package es.altair.main;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -109,6 +110,15 @@ public class App
     		
     		case 4:
     			aDao.MostrarMasCaro();
+    			break;
+    		case 5:
+    			List<Articulo> lista= aDao.criteriaQuery();//muestra articulos orden ascendente;
+    			for (Articulo articulo : lista) {
+					System.out.println(articulo.getNombre()+"   " +articulo.getPrecio()+"$");
+				}
+    			break;
+    		case 6:
+    			tDao.tiendasCon954();//consulta nativa sql
     			break;
     		}
         }while(opcion!=0);
@@ -319,19 +329,23 @@ public class App
 		
 	}
 	private static void menu() {
-	    System.out.println("\t\t╔════════════════════════════╗");
-	    System.out.println("\t\t║           Menú             ║");
-	    System.out.println("\t\t╠════════════════════════════╣");
-	    System.out.println("\t\t║     1) Añadir              ║");
-	    System.out.println("\t\t║                            ║");
-	    System.out.println("\t\t║     2) Borrar              ║");
-	    System.out.println("\t\t║                            ║");
-	    System.out.println("\t\t║     3) Modificar           ║");
-	    System.out.println("\t\t║                            ║");
-	    System.out.println("\t\t║     4) Articulo Más Caro   ║");
-	    System.out.println("\t\t║                            ║");
-	    System.out.println("\t\t║     0) Salir               ║");
-	    System.out.println("\t\t╚════════════════════════════╝");
+	    System.out.println("\t\t╔════════════════════════════════════════════╗");
+	    System.out.println("\t\t║                    Menú                    ║");
+	    System.out.println("\t\t╠════════════════════════════════════════════╣");
+	    System.out.println("\t\t║     1) Añadir                              ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     2) Borrar                              ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     3) Modificar                           ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     4) Articulo Más Caro                   ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     5) Listado articulos precio ascendente ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     6) Tiendas que telefono empieza: 954   ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     0) Salir                               ║");
+	    System.out.println("\t\t╚════════════════════════════════════════════╝");
 		
 	}
 	public static void menuSecundario() {

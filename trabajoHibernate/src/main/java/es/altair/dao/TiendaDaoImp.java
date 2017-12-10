@@ -99,4 +99,27 @@ public class TiendaDaoImp implements TiendaDao {
 		}
 	}
 
+	public void tiendasCon954() {
+		List<Tienda> tiendas = new ArrayList<Tienda>();
+
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session sesion = sf.openSession();
+
+		try {
+			sesion.beginTransaction();
+			tiendas = sesion.createSQLQuery("SELECT * FROM tienda where telefono like '954%'").addEntity(Tienda.class).list();
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			sf.close();
+		}
+
+		for (Tienda tienda : tiendas) {
+			System.out.println(tienda.getNombre()+"   "+tienda.getTelefono());
+		}
+		
+	}
+
 }

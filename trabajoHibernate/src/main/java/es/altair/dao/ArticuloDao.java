@@ -11,4 +11,5 @@ public interface ArticuloDao {
 	public void actualizar(Articulo a);
 	public void listar();
 	public void MostrarMasCaro();
+	public List<Articulo> criteriaQuery();
 }

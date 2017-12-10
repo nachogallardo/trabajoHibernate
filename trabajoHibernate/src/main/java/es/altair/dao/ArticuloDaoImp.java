@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import es.altair.bean.Articulo;
 
@@ -114,6 +116,27 @@ public class ArticuloDaoImp implements ArticuloDao {
 			sf.close();
 		}
 		System.out.println(a.getNombre()+" "+a.getPrecio()+"$");
+		
+	}
+
+	public List<Articulo> criteriaQuery() {
+		List<Articulo> articulos = new ArrayList<Articulo>();
+
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session sesion = sf.openSession();
+
+		try {
+			sesion.beginTransaction();
+			articulos = sesion.createCriteria(Articulo.class).addOrder(Order.asc("precio")).list();
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			sf.close();
+		}
+
+		return articulos;
 		
 	}
 

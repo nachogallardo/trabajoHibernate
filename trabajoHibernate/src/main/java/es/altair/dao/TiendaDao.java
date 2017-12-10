@@ -10,4 +10,5 @@ public interface TiendaDao {
 	public Tienda get(int i);
 	public void actualizar(Tienda t);
 	public void listar();
+	public void tiendasCon954();
 }
