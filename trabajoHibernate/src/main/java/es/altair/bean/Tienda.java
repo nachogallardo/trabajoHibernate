@@ -11,6 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tienda")
@@ -18,9 +24,15 @@ public class Tienda implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTienda;
+	@NotNull
+	@NotBlank
 	private String nombre;
+	@Min(100000000)
+	@Max(999999999)
 	private int telefono;
+	@Email
 	private String email;
+	@NotBlank
 	private String direccion;
 	
 	

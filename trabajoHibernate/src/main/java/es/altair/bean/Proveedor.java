@@ -10,13 +10,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name="proveedor")
 public class Proveedor implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idProveedor;
+	@NotNull
+	@NotBlank
 	private String nombre;
+	@Min(100000000)
+	@Max(999999999)
 	private int telefono;
 	@OneToMany(mappedBy="proveedor",cascade=CascadeType.ALL)
 	private Set<ProveedorTienda> proveedores;

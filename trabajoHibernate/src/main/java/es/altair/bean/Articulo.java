@@ -13,6 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "articulo")
@@ -20,7 +26,9 @@ public class Articulo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idArticulo;
-	
+	@NotNull
+	@Size(min=1,max=20)
+	@NotBlank
 	private String nombre;
 	
 	@Temporal(TemporalType.DATE)
@@ -29,7 +37,8 @@ public class Articulo implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "idTienda")
 	private Tienda tienda;
-	
+	@Min(0)
+	@Max(100000)
 	private int precio;
 
 	public Articulo() {

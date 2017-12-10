@@ -4,6 +4,9 @@ package es.altair.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,8 +24,12 @@ public class ArticuloDaoImp implements ArticuloDao {
 			sesion.beginTransaction();
 			sesion.save(a);
 			sesion.getTransaction().commit();
-		}catch (Exception e) {
-			e.printStackTrace();
+		}catch (ConstraintViolationException e) {
+			sesion.getTransaction().rollback();
+			System.out.println("--ERRORES--");
+			for (ConstraintViolation cv  : e.getConstraintViolations()) {
+				System.out.println("Campo ("+cv.getPropertyPath()+") Mensaje ("+cv.getMessage()+")");
+			}
 		}finally{
 			sesion.close();
 			sf.close();

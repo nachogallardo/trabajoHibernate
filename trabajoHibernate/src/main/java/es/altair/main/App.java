@@ -284,7 +284,7 @@ public class App
 		
 	}
 	private static void AniadirTienda(TiendaDao tDao) {
-		try {
+		    try {
 			System.out.println("Dime el nombre de la tienda: ");
 			String nombre= sc.next();
 			System.out.println("Dime el teléfono de la tienda: ");
@@ -293,7 +293,8 @@ public class App
 			String email= sc.next();
 			System.out.println("Dime la dirección de la tienda: ");
 			String direccion= sc.next();
-			tDao.save(new Tienda(nombre,telefono,email,direccion));	
+			Tienda t =new Tienda(nombre,telefono,email,direccion);
+			tDao.save(t);	
 			}catch (Exception e) {
 				System.out.println("Imposible de añadir Tienda");
 			}	
