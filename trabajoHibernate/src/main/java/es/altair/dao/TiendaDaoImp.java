@@ -78,8 +78,12 @@ public class TiendaDaoImp implements TiendaDao {
 			sesion.beginTransaction();
 			sesion.update(t);
 			sesion.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch (ConstraintViolationException e) {
+			sesion.getTransaction().rollback();
+			System.out.println("--ERRORES--");
+			for (ConstraintViolation cv  : e.getConstraintViolations()) {
+				System.out.println("Campo ("+cv.getPropertyPath()+") Mensaje ("+cv.getMessage()+")");
+			}
 		}finally {
 			sesion.close();
 			sf.close();
@@ -122,9 +126,9 @@ public class TiendaDaoImp implements TiendaDao {
 			sesion.close();
 			sf.close();
 		}
-
+		System.out.println("--LISTADO TIENDAS QUE NÚMERO DE TELÉFONO EMPIEZA POR 954--");
 		for (Tienda tienda : tiendas) {
-			System.out.println(tienda.getNombre()+"   "+tienda.getTelefono());
+			System.out.println("Nombre: "+tienda.getNombre()+"   Teléfono: "+tienda.getTelefono());
 		}
 		
 	}

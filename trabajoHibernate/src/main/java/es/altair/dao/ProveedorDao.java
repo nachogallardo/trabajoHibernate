@@ -11,4 +11,5 @@ public interface ProveedorDao {
 	public Proveedor get(int i);
 	public void actualizar(Proveedor p);
 	public void listar();
+	public void muestraProveedores(int i);
 }

@@ -107,20 +107,28 @@ public class App
     				break;
     			}
     			break;
-    		
-    		case 4:
+    		//MOSTRAR EL ARTICULO MAS CARO
+    		case 4:  			
     			aDao.MostrarMasCaro();
     			break;
+    	    //MUESTRA ARTICULOS CON EL PRECIO EN ORDEN ASCENDENTE 
     		case 5:
-    			List<Articulo> lista= aDao.criteriaQuery();//muestra articulos orden ascendente;
+    			List<Articulo> lista= aDao.criteriaQuery();
+    			System.out.println("--LISTADO ARTICULOS PRECIO ASCENDENTE--");
     			for (Articulo articulo : lista) {
-					System.out.println(articulo.getNombre()+"   " +articulo.getPrecio()+"$");
+					System.out.println("Nombre articulo: "+articulo.getNombre()+"   Precio: " +articulo.getPrecio()+" euros.");
 				}
     			break;
+    	    //CONSULTA NATIVA SQL QUE MUESTRA LAS TIENDAS CON TELEFONO QUE EMPIEZA POR 954
     		case 6:
-    			tDao.tiendasCon954();//consulta nativa sql
+    			tDao.tiendasCon954();
     			break;
+    		//MUESTRA PROVEEDORES POR PAGINACION
+        	case 7:
+        		pDao.muestraProveedores(3);
+        		break;
     		}
+	
         }while(opcion!=0);
 
         
@@ -344,6 +352,8 @@ public class App
 	    System.out.println("\t\t║     5) Listado articulos precio ascendente ║");
 	    System.out.println("\t\t║                                            ║");
 	    System.out.println("\t\t║     6) Tiendas que telefono empieza: 954   ║");
+	    System.out.println("\t\t║                                            ║");
+	    System.out.println("\t\t║     7) Muestra Proveedores por paginación  ║");
 	    System.out.println("\t\t║                                            ║");
 	    System.out.println("\t\t║     0) Salir                               ║");
 	    System.out.println("\t\t╚════════════════════════════════════════════╝");

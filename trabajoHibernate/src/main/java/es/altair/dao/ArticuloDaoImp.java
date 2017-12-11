@@ -79,8 +79,12 @@ public class ArticuloDaoImp implements ArticuloDao {
 			sesion.beginTransaction();
 			sesion.update(a);
 			sesion.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch (ConstraintViolationException e) {
+			sesion.getTransaction().rollback();
+			System.out.println("--ERRORES--");
+			for (ConstraintViolation cv  : e.getConstraintViolations()) {
+				System.out.println("Campo ("+cv.getPropertyPath()+") Mensaje ("+cv.getMessage()+")");
+			}
 		}finally {
 			sesion.close();
 			sf.close();
@@ -122,7 +126,8 @@ public class ArticuloDaoImp implements ArticuloDao {
 			sesion.close();
 			sf.close();
 		}
-		System.out.println(a.getNombre()+" "+a.getPrecio()+"$");
+		System.out.println("--ARTICULO MÁS CARO--");
+		System.out.println("Nombre: "+a.getNombre()+"     Precio: "+a.getPrecio()+" euros.");
 		
 	}
 

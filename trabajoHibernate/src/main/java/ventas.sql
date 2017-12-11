@@ -31,7 +31,7 @@ CREATE TABLE `articulo` (
   PRIMARY KEY (`idArticulo`),
   KEY `tienda_idx` (`idTienda`),
   CONSTRAINT `tienda` FOREIGN KEY (`idTienda`) REFERENCES `tienda` (`idTienda`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `articulo` (
 
 LOCK TABLES `articulo` WRITE;
 /*!40000 ALTER TABLE `articulo` DISABLE KEYS */;
-INSERT INTO `articulo` VALUES (40,'sdfgsd','2017-11-30',21,213),(41,'ewfew','2017-11-30',21,2134);
+INSERT INTO `articulo` VALUES (47,'articulo1','2017-12-11',27,12),(48,'articulo2','2017-12-11',27,23),(49,'articulo3','2017-12-11',28,43),(50,'articulo4','2017-12-11',28,55),(51,'articulo5','2017-12-11',29,2),(52,'articulo7','2017-12-11',30,4),(53,'articulo8','2017-12-11',30,5),(54,'articulo6','2017-12-11',29,78);
 /*!40000 ALTER TABLE `articulo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ CREATE TABLE `proveedor` (
   `nombre` varchar(45) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   PRIMARY KEY (`idProveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +65,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
+INSERT INTO `proveedor` VALUES (7,'proveedor1',657534543),(8,'proveedor2',655432345),(9,'Proveedor3',654321543),(10,'Proveedor4',432456543),(11,'proveedor5',543678987),(12,'proveedor6',789876543),(13,'proveedor7',654789654);
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +86,7 @@ CREATE TABLE `proveedortienda` (
   KEY `tienda_idx` (`idTienda`),
   CONSTRAINT `proveedor` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`idProveedor`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `tnd` FOREIGN KEY (`idTienda`) REFERENCES `tienda` (`idTienda`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,6 +95,7 @@ CREATE TABLE `proveedortienda` (
 
 LOCK TABLES `proveedortienda` WRITE;
 /*!40000 ALTER TABLE `proveedortienda` DISABLE KEYS */;
+INSERT INTO `proveedortienda` VALUES (7,12,29,'2017-12-11'),(8,12,27,'2017-12-11');
 /*!40000 ALTER TABLE `proveedortienda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +113,7 @@ CREATE TABLE `tienda` (
   `email` varchar(45) DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idTienda`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,17 +122,9 @@ CREATE TABLE `tienda` (
 
 LOCK TABLES `tienda` WRITE;
 /*!40000 ALTER TABLE `tienda` DISABLE KEYS */;
-INSERT INTO `tienda` VALUES (21,'sdfgd',3214,'sdfds','sdfdsaf');
+INSERT INTO `tienda` VALUES (27,'tienda1',954678654,'tienda1@gmail.com','primeracalle'),(28,'tienda2',654323456,'tienda2@gmail.com','segundacalle'),(29,'tienda3',954677344,'tienda3@gmail.com','terceracalle'),(30,'tienda4',954876787,'tienda4@gmail.com','terceracalle');
 /*!40000 ALTER TABLE `tienda` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'ventas'
---
-
---
--- Dumping routines for database 'ventas'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -141,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-01 13:21:19
+-- Dump completed on 2017-12-11 19:25:58

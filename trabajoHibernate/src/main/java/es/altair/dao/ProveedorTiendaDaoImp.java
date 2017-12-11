@@ -78,8 +78,12 @@ public class ProveedorTiendaDaoImp implements ProveedorTiendaDao {
 			sesion.beginTransaction();
 			sesion.update(pt1);
 			sesion.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch (ConstraintViolationException e) {
+			sesion.getTransaction().rollback();
+			System.out.println("--ERRORES--");
+			for (ConstraintViolation cv  : e.getConstraintViolations()) {
+				System.out.println("Campo ("+cv.getPropertyPath()+") Mensaje ("+cv.getMessage()+")");
+			}
 		}finally {
 			sesion.close();
 			sf.close();
