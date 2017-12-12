@@ -30,7 +30,7 @@ public class Tienda implements Serializable {
 	@Min(100000000)
 	@Max(999999999)
 	private int telefono;
-	@Email
+	@Email(message="EMAIL INCORRECTO")
 	private String email;
 	@NotBlank
 	private String direccion;
